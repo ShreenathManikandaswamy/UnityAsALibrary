@@ -14,11 +14,11 @@
 		710688C32ABDB189000436FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 710688C12ABDB189000436FA /* Main.storyboard */; };
 		710688C52ABDB18A000436FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 710688C42ABDB18A000436FA /* Assets.xcassets */; };
 		710688C82ABDB18A000436FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 710688C62ABDB18A000436FA /* LaunchScreen.storyboard */; };
-		7133430F2ABDBF3B00887350 /* UnityFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7133430D2ABDBF3B00887350 /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7152161C2ABDBCF70001D86E /* Unity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152161B2ABDBCF70001D86E /* Unity.swift */; };
 		7152161E2ABDBD1A0001D86E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152161D2ABDBD1A0001D86E /* ContentView.swift */; };
-		71E903462ABDBFC500C67A12 /* VuforiaEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71E903442ABDBFC500C67A12 /* VuforiaEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		71E903492ABDBFC900C67A12 /* UnityDriver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71E903472ABDBFC900C67A12 /* UnityDriver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71FC34BF2AC16A3F0014F465 /* UnityDriver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71E903472ABDBFC900C67A12 /* UnityDriver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71FC34C02AC16A430014F465 /* VuforiaEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71E903442ABDBFC500C67A12 /* VuforiaEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71FC34C12AC16A460014F465 /* UnityFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7133430D2ABDBF3B00887350 /* UnityFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,9 +28,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7133430F2ABDBF3B00887350 /* UnityFramework.framework in Embed Frameworks */,
-				71E903492ABDBFC900C67A12 /* UnityDriver.framework in Embed Frameworks */,
-				71E903462ABDBFC500C67A12 /* VuforiaEngine.framework in Embed Frameworks */,
+				71FC34C12AC16A460014F465 /* UnityFramework.framework in Embed Frameworks */,
+				71FC34C02AC16A430014F465 /* VuforiaEngine.framework in Embed Frameworks */,
+				71FC34BF2AC16A3F0014F465 /* UnityDriver.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,7 +74,6 @@
 				1030F6AA2CCC510B4F45496F /* Pods-SwiftUnity.debug.xcconfig */,
 				CB2BE00BA4BDC84EE304C89E /* Pods-SwiftUnity.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
