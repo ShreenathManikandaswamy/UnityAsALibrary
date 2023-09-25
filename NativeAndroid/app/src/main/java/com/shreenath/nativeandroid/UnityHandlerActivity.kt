@@ -16,7 +16,7 @@ class UnityHandlerActivity : AppCompatActivity() {
         jeepButton?.setOnClickListener()
         {
             val intent = android.content.Intent(this, UnityPlayerActivity::class.java)
-            intent.putExtra("BrandName", "Jeep")
+            intent.putExtra("Brand", "Jeep")
             startActivity(intent)
         }
 
@@ -27,7 +27,7 @@ class UnityHandlerActivity : AppCompatActivity() {
         lanciaButton?.setOnClickListener()
         {
             val intent = android.content.Intent(this, UnityPlayerActivity::class.java)
-            intent.putExtra("BrandName", "Lancia")
+            intent.putExtra("Brand", "Lancia")
             startActivity(intent)
         }
     }
