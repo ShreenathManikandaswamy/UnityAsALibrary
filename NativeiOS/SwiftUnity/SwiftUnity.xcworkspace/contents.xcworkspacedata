@@ -2,10 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../../../../Builds/Wipro/iOSExport/Unity-iPhone.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "container:SwiftUnity.xcodeproj">
+      location = "group:../../Documents/Builds/TestBuild/iOS/Unity-iPhone.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:SwiftUnity.xcodeproj">
