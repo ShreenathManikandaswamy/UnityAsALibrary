@@ -1,27 +1,68 @@
 using System;
 using UnityEngine;
-using TMPro;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class IntentReceiver : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI intentText;
+    private List<string> keys;
 
-    private string intents;
+    private Dictionary<string, string> intents;
 
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        intents = new Dictionary<string, string>();
+
+        //Enable this region to simulate for android
+        intents.Add("Scene", "SceneOne");
+        intents.Add("Vin", "0123456789");
+        DisplayIntents();
+
+        //Enable this region to simulate for ios
+        /*
+        SetIntent("Scene", "SceneOne");
+        SetIntent("Vin", "0123456789");
+        SetIntent("Done", "");
+        */
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (focus)
+        {
+#if PLATFORM_ANDROID
+            if (getIntentData())
+                DisplayIntents();
+#endif
+        }
     }
 
     private void DisplayIntents()
     {
-        intentText.text = intents;
+        foreach(string key in intents.Keys)
+        {
+            Debug.Log("Key: " + key + " -------- Value: " + intents[key]);
+        }
+
+        string scene = intents["Scene"];
+        if(scene == "SceneOne")
+        {
+            SceneManager.LoadScene(1);
+        }else
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
-    public void SetBrand(string selectedBrand)
+    public void SetIntent(string key, string value)
     {
-        intentText.text = selectedBrand;
+        if(key == "Done")
+        {
+            DisplayIntents();
+            return;
+        }
+        intents.Add(key, value);
     }
 
     #region Intent Process
@@ -42,8 +83,14 @@ public class IntentReceiver : MonoBehaviour
 
         if (extras != null)
         {
-            Debug.Log(GetProperty(extras, "Brand"));
-            intents = GetProperty(extras, "Brand");
+            foreach(string key in keys)
+            {
+                string intentVal = GetProperty(extras, key);
+                if(!string.IsNullOrEmpty(intentVal))
+                {
+                    intents.Add(key, intentVal);
+                }
+            }
             return true;
         }
 #endif
@@ -100,17 +147,5 @@ public class IntentReceiver : MonoBehaviour
         AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
         AndroidJavaObject activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
         activity.Call("Launch", "Test Data");
-    }
-
-    private void OnApplicationFocus(bool focus)
-    {
-        if(focus)
-        {
-#if PLATFORM_ANDROID
-            if (getIntentData())
-                DisplayIntents();
-
-#endif
-        }
     }
 }
