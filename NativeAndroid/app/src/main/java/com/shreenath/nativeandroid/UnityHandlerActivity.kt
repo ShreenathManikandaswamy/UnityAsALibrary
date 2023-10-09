@@ -16,7 +16,8 @@ class UnityHandlerActivity : AppCompatActivity() {
         jeepButton?.setOnClickListener()
         {
             val intent = android.content.Intent(this, UnityPlayerActivity::class.java)
-            intent.putExtra("Brand", "Jeep")
+            intent.putExtra("Scene", "SceneOne")
+            intent.putExtra("Vin", "123456789")
             startActivity(intent)
         }
 

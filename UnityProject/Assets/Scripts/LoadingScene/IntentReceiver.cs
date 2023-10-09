@@ -10,13 +10,14 @@ public class IntentReceiver : MonoBehaviour
 
     private Dictionary<string, string> intents;
 
-    private void Awake()
+    
+    private void Start()
     {
         intents = new Dictionary<string, string>();
 
         //Enable this region to simulate for android
         intents.Add("Scene", "SceneOne");
-        intents.Add("Vin", "0123456789");
+        intents.Add("Vin", "Jeep0123456789");
         DisplayIntents();
 
         //Enable this region to simulate for ios
@@ -25,7 +26,9 @@ public class IntentReceiver : MonoBehaviour
         SetIntent("Vin", "0123456789");
         SetIntent("Done", "");
         */
+        
     }
+    
 
     private void OnApplicationFocus(bool focus)
     {
@@ -42,16 +45,14 @@ public class IntentReceiver : MonoBehaviour
     {
         foreach(string key in intents.Keys)
         {
-            Debug.Log("Key: " + key + " -------- Value: " + intents[key]);
+            Debug.Log(key + intents[key]);
+            ApplicationManager.Instance.Intents.Add(key, intents[key]);
         }
 
         string scene = intents["Scene"];
         if(scene == "SceneOne")
         {
             SceneManager.LoadScene(1);
-        }else
-        {
-            SceneManager.LoadScene(2);
         }
     }
 
@@ -83,9 +84,13 @@ public class IntentReceiver : MonoBehaviour
 
         if (extras != null)
         {
+            Debug.Log("Extras are not null");
+            intents = new Dictionary<string, string>();
             foreach(string key in keys)
             {
+                Debug.Log(key);
                 string intentVal = GetProperty(extras, key);
+                Debug.Log(intentVal);
                 if(!string.IsNullOrEmpty(intentVal))
                 {
                     intents.Add(key, intentVal);
